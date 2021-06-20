@@ -1,0 +1,40 @@
+body {
+    background: linear-gradient(180deg, rgba(36,52,71,1) 0%, rgba(20,29,38,1) 100%);
+    overflow: overlay;
+}
+
+#form-row {
+    height: 100%;
+}
+
+#form-column{
+    -webkit-box-shadow: 0px 0px 21px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 21px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 21px -1px rgba(0,0,0,0.75);
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    margin: 50px 0px;
+}
+
+.dynamic-container{
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 10px;
+    color: #585757;
+    margin: 10px 0px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5c636a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
