@@ -44,40 +44,43 @@ $pdf->Cell(0, 8, 'Habilidades e Competências', 0, 0, 'L', 0);
 $pdf->ln();
 $pdf->SetFont('Calibri', '', 11);
 $pdf->MultiCell(0, 8, $_POST['habilidadesCompetencias'], 0, 'L', 0);
-
-if (count($_POST['empresa']) > 0) {
-    $pdf->ln(10);
-    $pdf->SetFont('Calibri', 'B', 12);
-    $pdf->Cell(0, 8, 'Experiência', 0, 0, 'L', 0);
-    $pdf->ln();
-    $pdf->SetFont('Calibri', '', 11);
-    foreach ($_POST['empresa'] as $key => $nomeEmpresa) {
-        $pdf->Cell(0, 8, $nomeEmpresa . ' - ' . $_POST['cargo'][$key], 0, 0, 'L', 0);
-        $pdf->ln(5);
-        $pdf->Cell(0, 8, strftime('%B/%Y', strtotime($_POST['dt-inicio'][$key])) . ' - ' . strftime('%B/%Y', strtotime($_POST['dt-fim'][$key])), 0, 0, 'L', 0);
-        $pdf->ln();
-        $pdf->MultiCell(0, 8, 'Responsabilidades: ' . $_POST['responsabilidade'][$key], 0, 'L', 0);
-        if (count($_POST['empresa']) != $key + 1) {
-            $pdf->ln(6);
-        }
-    }
+if(isset($_POST['empresa'])){
+	if (count($_POST['empresa']) > 0) {
+		$pdf->ln(10);
+		$pdf->SetFont('Calibri', 'B', 12);
+		$pdf->Cell(0, 8, 'Experiência', 0, 0, 'L', 0);
+		$pdf->ln();
+		$pdf->SetFont('Calibri', '', 11);
+		foreach ($_POST['empresa'] as $key => $nomeEmpresa) {
+			$pdf->Cell(0, 8, $nomeEmpresa . ' - ' . $_POST['cargo'][$key], 0, 0, 'L', 0);
+			$pdf->ln(5);
+			$pdf->Cell(0, 8, strftime('%B/%Y', strtotime($_POST['dt-inicio'][$key])) . ' - ' . strftime('%B/%Y', strtotime($_POST['dt-fim'][$key])), 0, 0, 'L', 0);
+			$pdf->ln();
+			$pdf->MultiCell(0, 8, 'Responsabilidades: ' . $_POST['responsabilidade'][$key], 0, 'L', 0);
+			if (count($_POST['empresa']) != $key + 1) {
+				$pdf->ln(6);
+			}
+		}
+	}
 }
-if (count($_POST['instituicao']) > 0) {
-    $pdf->ln(10);
-    $pdf->SetFont('Calibri', 'B', 12);
-    $pdf->Cell(0, 8, 'Educação', 0, 0, 'L', 0);
-    $pdf->ln();
-    $pdf->SetFont('Calibri', '', 11);
+if(isset($_POST['instituicao'])){
+	if (count($_POST['instituicao']) > 0) {
+		$pdf->ln(10);
+		$pdf->SetFont('Calibri', 'B', 12);
+		$pdf->Cell(0, 8, 'Educação', 0, 0, 'L', 0);
+		$pdf->ln();
+		$pdf->SetFont('Calibri', '', 11);
 
-    foreach ($_POST['instituicao'] as $key => $nomeInstituicao) {
-        $pdf->Cell(0, 8, $nomeInstituicao, 0, 0, 'L', 0);
-        $pdf->ln(5);
-        $pdf->Cell(0, 8, strftime('%B/%Y', strtotime($_POST['dt-formacao'][$key])), 0, 0, 'L', 0);
-        $pdf->ln();
-        $pdf->MultiCell(0, 8, 'Cursos e prêmios: ' . $_POST['cursos-premios'][$key], 0, 'L', 0);
-        if (count($_POST['instituicao']) != $key + 1) {
-            $pdf->ln(6);
-        }
-    }
+		foreach ($_POST['instituicao'] as $key => $nomeInstituicao) {
+			$pdf->Cell(0, 8, $nomeInstituicao, 0, 0, 'L', 0);
+			$pdf->ln(5);
+			$pdf->Cell(0, 8, strftime('%B/%Y', strtotime($_POST['dt-formacao'][$key])), 0, 0, 'L', 0);
+			$pdf->ln();
+			$pdf->MultiCell(0, 8, 'Cursos e prêmios: ' . $_POST['cursos-premios'][$key], 0, 'L', 0);
+			if (count($_POST['instituicao']) != $key + 1) {
+				$pdf->ln(6);
+			}
+		}
+	}
 }
 $pdf->Output();
